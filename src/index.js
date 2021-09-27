@@ -19,12 +19,19 @@ function initializeCode() {
 
 function addElement(h1t, pt, imgsrc) {
   const newDiv = document.createElement("div");
-  newDiv.setAttribute("class", "wiki-item");
+  const contentDiv = document.createElement("div");
+  const imgContDiv = document.createElement("div");
 
+  newDiv.setAttribute("class", "wiki-item");
+  contentDiv.setAttribute("class", "wiki-content");
+  imgContDiv.setAttribute("class", "img-container");
+
+  // Header
   const header = document.createElement("h1");
   header.setAttribute("class", "wiki-header");
   header.textContent = h1t;
 
+  // Contents (p + img)
   const para = document.createElement("P");
   para.setAttribute("class", "wiki-text");
   para.textContent = pt;
@@ -33,9 +40,14 @@ function addElement(h1t, pt, imgsrc) {
   img.setAttribute("class", "wiki-img");
   img.src = imgsrc;
 
+  // Append to divs
+  contentDiv.appendChild(para);
+  imgContDiv.appendChild(img);
+  contentDiv.appendChild(imgContDiv);
+
+  // and to main div
   newDiv.appendChild(header);
-  newDiv.appendChild(para);
-  newDiv.appendChild(img);
+  newDiv.appendChild(contentDiv);
 
   // add the newly created element and its content into the DOM
   const currentDiv = document.getElementById("container");
