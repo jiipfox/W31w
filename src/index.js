@@ -51,7 +51,7 @@ function addElement(h1t, pt, imgsrc) {
 
   // add the newly created element and its content into the DOM
   const currentDiv = document.getElementById("container");
-  document.body.insertBefore(newDiv, currentDiv);
+  currentDiv.appendChild(newDiv);
 }
 /**
   <div class="" >
