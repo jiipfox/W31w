@@ -13,6 +13,8 @@ function initializeCode() {
   addElement("H1", "Para1");
   addElement("H2", "Para2");
   addElement("H3", "Para3");
+  addElement("H4", "Para4");
+  addElement("H5", "Para5");
 }
 
 function addElement(h1t, pt, imgsrc) {
