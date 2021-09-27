@@ -10,11 +10,31 @@ if (document.readyState !== "loading") {
 
 function initializeCode() {
   //document.getElementById("app").innerHTML = "<h1>Holoa!</h1>";
-  addElement("H1", "Para1");
-  addElement("H2", "Para2");
-  addElement("H3", "Para3");
-  addElement("H4", "Para4");
-  addElement("H5", "Para5");
+  const addr = "https://dog.ceo/api/breed/haukku/images/random";
+  const b1 = "Hound";
+  const b2 = "Puggle";
+  const b3 = "Retriever";
+  const b4 = "Shiba";
+  const b5 = "Terrier";
+
+  let b1Addr = createSuperAddress(addr, b1);
+  let b2Addr = createSuperAddress(addr, b2);
+  let b3Addr = createSuperAddress(addr, b3);
+  let b4Addr = createSuperAddress(addr, b4);
+  let b5Addr = createSuperAddress(addr, b5);
+
+  let dogJson = whoLetTheDogsOut(b1Addr);
+  let srcOfImg = parseImgSrc(dogJson);
+
+  addElement(b1, "Para1", srcOfImg);
+
+  addElement(b2, "Para2");
+
+  addElement(b3, "Para3");
+
+  addElement(b4, "Para4");
+
+  addElement(b5, "Para5");
 }
 
 function addElement(h1t, pt, imgsrc) {
@@ -53,16 +73,25 @@ function addElement(h1t, pt, imgsrc) {
   const currentDiv = document.getElementById("container");
   currentDiv.appendChild(newDiv);
 }
-/**
-  <div class="" >
-  <h1 class="wiki-header">Breed X</h1>
-  <div class="wiki-content">
-    <p class="wiki-text">
-      Some text about this breed.
-    </p>
-    <div class="img-container">
-      <img class="wiki-img" src="">
-    </div>
-  </div>
-</div> 
-*/
+
+async function whoLetTheDogsOut(addr) {
+  let response = await fetch(addr);
+  let dogs = await response.json();
+  console.log("JSON:");
+  console.log(dogs);
+  return dogs;
+}
+
+async function parseImgSrc(givenJson) {
+  console.log("Json:");
+  await console.log(givenJson);
+  let imgSrc = await givenJson.message;
+  console.log("PARSED URL:");
+  console.log(imgSrc);
+  return imgSrc;
+}
+
+function createSuperAddress(addr, breed) {
+  let addrr = addr.replace("haukku", breed.toLowerCase());
+  return addrr;
+}
