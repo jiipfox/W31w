@@ -8,7 +8,7 @@ if (document.readyState !== "loading") {
   });
 }
 
-function initializeCode() {
+async function initializeCode() {
   //document.getElementById("app").innerHTML = "<h1>Holoa!</h1>";
   const addr = "https://dog.ceo/api/breed/haukku/images/random";
   const b1 = "Hound";
@@ -23,18 +23,25 @@ function initializeCode() {
   let b4Addr = createSuperAddress(addr, b4);
   let b5Addr = createSuperAddress(addr, b5);
 
-  let dogJson = whoLetTheDogsOut(b1Addr);
+  let dogJson = await whoLetTheDogsOut(b1Addr);
   let srcOfImg = parseImgSrc(dogJson);
-
   addElement(b1, "Para1", srcOfImg);
 
-  addElement(b2, "Para2");
+  dogJson = await whoLetTheDogsOut(b2Addr);
+  srcOfImg = parseImgSrc(dogJson);
+  addElement(b2, "Para2", srcOfImg);
 
-  addElement(b3, "Para3");
+  dogJson = await whoLetTheDogsOut(b3Addr);
+  srcOfImg = parseImgSrc(dogJson);
+  addElement(b3, "Para3", srcOfImg);
 
-  addElement(b4, "Para4");
+  dogJson = await whoLetTheDogsOut(b4Addr);
+  srcOfImg = parseImgSrc(dogJson);
+  addElement(b4, "Para4", srcOfImg);
 
-  addElement(b5, "Para5");
+  dogJson = await whoLetTheDogsOut(b5Addr);
+  srcOfImg = parseImgSrc(dogJson);
+  addElement(b5, "Para5", srcOfImg);
 }
 
 function addElement(h1t, pt, imgsrc) {
@@ -77,17 +84,11 @@ function addElement(h1t, pt, imgsrc) {
 async function whoLetTheDogsOut(addr) {
   let response = await fetch(addr);
   let dogs = await response.json();
-  console.log("JSON:");
-  console.log(dogs);
   return dogs;
 }
 
-async function parseImgSrc(givenJson) {
-  console.log("Json:");
-  await console.log(givenJson);
-  let imgSrc = await givenJson.message;
-  console.log("PARSED URL:");
-  console.log(imgSrc);
+function parseImgSrc(givenJson) {
+  let imgSrc = givenJson.message;
   return imgSrc;
 }
 
