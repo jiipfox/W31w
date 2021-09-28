@@ -29,7 +29,7 @@ body {
     display: flex;
     flex-direction: row-reverse;
   }
-  .wiki-img {
+  .img-container {
     min-width: 50%;
     max-width: 50%;
   }
