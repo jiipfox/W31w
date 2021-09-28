@@ -10,13 +10,6 @@ body {
 
 .wiki-img {
   width: 100%;
-  min-width: 50%;
-  max-width: 50%;
-}
-
-.wiki-text {
-  min-width: 50%;
-  max-width: 50%;
 }
 
 .wiki-item {
@@ -35,5 +28,14 @@ body {
   .wiki-content {
     display: flex;
     flex-direction: row-reverse;
+  }
+  .wiki-img {
+    min-width: 50%;
+    max-width: 50%;
+  }
+
+  .wiki-text {
+    min-width: 50%;
+    max-width: 50%;
   }
 }
