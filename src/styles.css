@@ -5,7 +5,8 @@ body {
 
 @media (min-width: 600px) {
   .wiki-content {
-    display: flex; /* or inline-flex */
+    display: flex;
+    flex-direction: row-reverse;
   }
 }
 
