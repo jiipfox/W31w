@@ -5,6 +5,7 @@ body {
 
 .container {
   max-width: 960px;
+  margin: 0 auto;
 }
 
 .wiki-img {
