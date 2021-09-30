@@ -9,7 +9,6 @@ if (document.readyState !== "loading") {
 }
 
 async function initializeCode() {
-  //document.getElementById("app").innerHTML = "<h1>Holoa!</h1>";
   const addr = "https://dog.ceo/api/breed/haukku/images/random";
   const summAddr = "https://en.wikipedia.org/api/rest_v1/page/summary/";
 
